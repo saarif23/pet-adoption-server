@@ -5,11 +5,25 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
+
+const authenticationRoutes = require('./routes/Authentication/index');
+const petsRoutes = require('./routes/Pets/index')
+const categoriesRoutes = require("./routes/Categories/index")
+const usersRoutes = require('./routes/Users/index')
+const adoptReqRoute = require('./routes/AdoptReq/index')
+const donationCampaignsRoute = require('./routes/DonationCampaigns/index')
+
+
 //------------------all middlewares------------------------
 applyMiddleware(app);
 
 
-
+app.use(authenticationRoutes);
+app.use(petsRoutes);
+app.use(usersRoutes);
+app.use(categoriesRoutes);
+app.use(adoptReqRoute);
+app.use(donationCampaignsRoute);
 
 
 
