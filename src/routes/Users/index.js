@@ -3,7 +3,7 @@ const verifyToken = require('../../middlewares/verifyToken')
 
 const router = require('express').Router();
 
-router.post('/users', verifyToken, async (req, res) => {
+router.post('/users',  async (req, res) => {
     try {
         const userData = req.body
         const newUser = new Users(userData);

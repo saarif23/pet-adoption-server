@@ -32,7 +32,7 @@ app.use(userAddedDonations);
 
 
 app.get("/health", (req, res) => {
-    res.send("Welcome to the pet adoption server home....");
+    res.send("Welcome to the pet adoption server ....");
 });
 
 app.all("*", (req, res, next) => {
@@ -48,12 +48,14 @@ app.use((error, req, res, next) => {
 })
 
 
-const main = async () => {
-    await connectDB();
-    app.listen(port, () => {
-        console.log(`pet adoption is running on port ${port}`);
-    });
-}
+// const main = async () => {
+//     await connectDB();
+//     app.listen(port, () => {
+//         console.log(`pet adoption is running on port ${port}`);
+//     });
+// }
 
 
-main();
+// main();
+
+module.exports = app;
