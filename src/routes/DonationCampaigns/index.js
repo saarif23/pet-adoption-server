@@ -21,4 +21,21 @@ router.get('/donationCampaigns/:id', async (req, res) => {
     }
 })
 
+
+router.post('/donationCampaigns', async (req, res) => {
+    try {
+        const campaignData = req.body
+        console.log(campaignData);
+        const newCampaignData = new Donations(campaignData);
+        const result = await newCampaignData.save();
+        res.status(201).send(result);
+    } catch (error) {
+        res.status(500).send({ message: error.message })
+    }
+
+})
+
+
+
+
 module.exports = router;
