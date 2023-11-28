@@ -1,9 +1,9 @@
 const Pets = require('../../modal/Pets');
-
+const verifyToken = require('../../middlewares/verifyToken')
 const router = require('express').Router();
 
 
-router.get('/userAddedPet', async (req, res) => {
+router.get('/userAddedPet', verifyToken,  async (req, res) => {
     try {
         const userEmail = req.query.email;
 
@@ -18,8 +18,7 @@ router.get('/userAddedPet', async (req, res) => {
 
 
 
-
-router.get('/userAddedPet/:id', async (req, res) => {
+router.get('/userAddedPet/:id',verifyToken, async (req, res) => {
     try {
         const id = req.params.id
         const userAddedPet = await Pets.findById(id);
@@ -32,7 +31,7 @@ router.get('/userAddedPet/:id', async (req, res) => {
 
 
 // Find the pet by ID and update its information-----------------------------------
-router.put('/userAddedPet/:id', async (req, res) => {
+router.put('/userAddedPet/:id', verifyToken, async (req, res) => {
     try {
         const id = req.params.id;
         const updateData = req.body;
@@ -53,7 +52,7 @@ router.put('/userAddedPet/:id', async (req, res) => {
 
 ///// Find the pet by ID and delete it---------------------------------
 
-router.delete('/userAddedPet/:id', async (req, res) => {
+router.delete('/userAddedPet/:id',  verifyToken, async (req, res) => {
     try {
         const id = req.params.id;
 

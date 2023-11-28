@@ -1,4 +1,5 @@
 const Donations = require("../../modal/DonationCampaigns");
+const verifyToken = require('../../middlewares/verifyToken')
 
 const router = require('express').Router();
 
@@ -22,7 +23,7 @@ router.get('/donationCampaigns/:id', async (req, res) => {
 })
 
 
-router.post('/donationCampaigns', async (req, res) => {
+router.post('/donationCampaigns', verifyToken, async (req, res) => {
     try {
         const campaignData = req.body
         console.log(campaignData);

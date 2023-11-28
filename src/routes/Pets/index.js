@@ -1,5 +1,5 @@
 const Pets = require('../../modal/Pets');
-
+const verifyToken = require('../../middlewares/verifyToken')
 
 const router = require('express').Router();
 
@@ -24,7 +24,7 @@ router.get('/pets/:id', async (req, res) => {
 })
 
 
-router.post('/pets', async (req, res) => {
+router.post('/pets', verifyToken, async (req, res) => {
     try {
         const petData = req.body
         const newPetData = new Pets(petData);

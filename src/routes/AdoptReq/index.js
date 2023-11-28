@@ -1,9 +1,9 @@
 const UserAdoptReq = require('../../modal/AdoptReq')
-
+const verifyToken = require('../../middlewares/verifyToken')
 
 const router = require('express').Router();
 
-router.post('/adoptReq', async (req, res) => {
+router.post('/adoptReq', verifyToken, async (req, res) => {
     try {
         const reqData = req.body
         const newAdoptReq = new UserAdoptReq(reqData);

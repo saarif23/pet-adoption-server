@@ -4,12 +4,13 @@ require("dotenv").config();
 const verifyToken = (req, res, next) => {
 
     const token = req?.cookies?.token;
+    console.log("token number is" , token);
     if (!token) {
-        return res.status(401).send({ message: "unauthorized access" })
+        return res.status(401).send({ message: "unauthorized access status code 401" })
     }
     jwt.verify(token, process.env.ACCESS_USER_TOKEN, (error, decoded) => {
         if (error) {
-            return res.status(401).send({ message: "unauthorized access" })
+            return res.status(401).send({ message: "unauthorized access status code 403 " })
         }
         req.user = decoded;
         next();

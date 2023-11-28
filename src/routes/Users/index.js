@@ -1,9 +1,9 @@
 const Users = require('../../modal/Users')
-
+const verifyToken = require('../../middlewares/verifyToken')
 
 const router = require('express').Router();
 
-router.post('/users', async (req, res) => {
+router.post('/users', verifyToken, async (req, res) => {
     try {
         const userData = req.body
         const newUser = new Users(userData);
@@ -18,7 +18,7 @@ router.post('/users', async (req, res) => {
 
 
 //get admin 
-router.get('/users/admin', async (req, res) => {
+router.get('/users/admin', verifyToken, async (req, res) => {
     try {
         const email = req.query.email
 
