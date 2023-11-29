@@ -3,6 +3,8 @@ const verifyToken = require('../../middlewares/verifyToken')
 const router = require('express').Router();
 
 
+
+// Find all pet by user email ----------------------------------------------------
 router.get('/userAddedPet', verifyToken,  async (req, res) => {
     try {
         const userEmail = req.query.email;
@@ -17,8 +19,8 @@ router.get('/userAddedPet', verifyToken,  async (req, res) => {
 
 
 
-
-router.get('/userAddedPet/:id',verifyToken, async (req, res) => {
+// Find single pet -----------------------------------------------------------
+router.get('/userAddedPet/:id', async (req, res) => {
     try {
         const id = req.params.id
         const userAddedPet = await Pets.findById(id);
@@ -70,8 +72,8 @@ router.delete('/userAddedPet/:id',  verifyToken, async (req, res) => {
 });
 
 
-
-router.patch('/userAddedPet/:id', async (req, res) => {
+//update user added pet---------------------------------------------------
+router.patch('/userAddedPet/:id', verifyToken, async (req, res) => {
     try {
         const id = req.params.id;
         const updateData = { adopted: true };

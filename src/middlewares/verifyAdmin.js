@@ -1,11 +1,20 @@
-
+const Admin = require('../modal/Users')
+const router = require('express').Router();
 const verifyAdmin = async (req, res, next) => {
     const email = req.decoded.email;
-    const query = { email: email };
-    const user = await userCollection.findOne(query);
-    const isAdmin = user?.role === "admin";
-    if (!isAdmin) {
-        return res.status(403).send({ message: "forbidden access" })
+
+    try {
+        const user = await Admin.findOne({ email });
+
+        if (!user || user.role !== 'admin') {
+            return res.status(403).send({ message: 'Forbidden access' });
+        }
+        next();
+    } catch (error) {
+        // Handle any potential errors
+        res.status(500).send({ message: error.message });
     }
-    next();
 }
+
+
+module.exports = verifyAdmin;

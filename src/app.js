@@ -8,10 +8,12 @@ const port = process.env.PORT || 5000;
 
 const authenticationRoutes = require('./routes/Authentication/index');
 const petsRoutes = require('./routes/Pets/index')
+const allPetsRoute = require('./routes/Pets/allpets')
 const categoriesRoutes = require("./routes/Categories/index")
 const usersRoutes = require('./routes/Users/index')
 const adoptReqRoute = require('./routes/AdoptReq/index')
 const donationCampaignsRoute = require('./routes/DonationCampaigns/index')
+const allDonationCampaignsRoute = require('./routes/DonationCampaigns/allCampaigns')
 const userAddedPet = require('./routes/UserPet/index')
 const userAddedDonations = require('./routes/UserDonations/index')
 
@@ -22,10 +24,12 @@ applyMiddleware(app);
 
 app.use(authenticationRoutes);
 app.use(petsRoutes);
+app.use(allPetsRoute);
 app.use(usersRoutes);
 app.use(categoriesRoutes);
 app.use(adoptReqRoute);
 app.use(donationCampaignsRoute);
+app.use(allDonationCampaignsRoute);
 app.use(userAddedPet);
 app.use(userAddedDonations);
 

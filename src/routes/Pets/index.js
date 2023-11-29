@@ -3,6 +3,8 @@ const verifyToken = require('../../middlewares/verifyToken')
 
 const router = require('express').Router();
 
+
+// Find All Pets  and check pets are not adopted and sort decending -------------
 router.get('/pets', async (req, res) => {
     try {
         const petData = await Pets.find({ adopted: false }).sort({ createdAt: -1 });
@@ -13,6 +15,8 @@ router.get('/pets', async (req, res) => {
 
 })
 
+
+// Find Single Pet------------------------------------------------------
 router.get('/pets/:id', async (req, res) => {
     try {
         const id = req.params.id
@@ -24,6 +28,8 @@ router.get('/pets/:id', async (req, res) => {
 })
 
 
+
+// Insert a new Pet by user --------------------------------------------
 router.post('/pets', verifyToken, async (req, res) => {
     try {
         const petData = req.body
