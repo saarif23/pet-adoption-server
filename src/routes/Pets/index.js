@@ -43,6 +43,28 @@ router.post('/pets', verifyToken, async (req, res) => {
 })
 
 
+// // Search Pets by Name and Category
+// router.get('/pets/search', async (req, res) => {
+//     try {
+//         const { pet_name, pet_category } = req.query;
+//         const query = {};
+
+//         if (pet_name) {
+//             query.pet_name = { $regex: new RegExp(pet_name, 'i') };
+//         }
+
+//         if (pet_category) {
+//             query.pet_category = { $regex: new RegExp(pet_category, 'i') };
+//         }
+
+//         query.adopted = false;
+//         console.log(query);
+//         const petData = await Pets.find(query).sort({ createdAt: -1 });
+//         res.status(200).send(petData);
+//     } catch (error) {
+//         res.status(500).send({ message: error.message });
+//     }
+// });
 
 
 

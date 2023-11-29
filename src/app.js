@@ -16,6 +16,7 @@ const donationCampaignsRoute = require('./routes/DonationCampaigns/index')
 const allDonationCampaignsRoute = require('./routes/DonationCampaigns/allCampaigns')
 const userAddedPet = require('./routes/UserPet/index')
 const userAddedDonations = require('./routes/UserDonations/index')
+const searchRoute = require('./routes/Pets/getPet')
 
 
 //------------------all middlewares------------------------
@@ -32,6 +33,7 @@ app.use(donationCampaignsRoute);
 app.use(allDonationCampaignsRoute);
 app.use(userAddedPet);
 app.use(userAddedDonations);
+app.use(searchRoute);
 
 
 

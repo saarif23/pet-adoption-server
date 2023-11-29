@@ -35,6 +35,14 @@ const DonationCampaigns = new Schema({
         type: String,
         required: true
     },
+    lastDate: {
+        type: Date,
+        required: true
+    },
+    status: {
+        type: Boolean,
+        required: true
+    },
     createdAt: {
         type: Date,
         default: Date.now,

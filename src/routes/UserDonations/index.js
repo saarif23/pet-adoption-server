@@ -44,7 +44,21 @@ router.put('/userAddedDonations/:id', verifyToken, async (req, res) => {
     }
 });
 
-
+//  Change Adopt Status by admin --------------------------------------------------
+router.patch("/userAddedDonations/:id", verifyToken, async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { status } = req.body;
+        // Find the user by ID and update the role
+        const updateCampaignStatus = await Donations.findByIdAndUpdate(id, { status }, { new: true });
+        if (!updateCampaignStatus) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+        res.send(updateCampaignStatus);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+})
 
 
 
