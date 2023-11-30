@@ -10,7 +10,7 @@ const AdoptReq = new Schema({
         required: true
     },
     phone: {
-        type: Number,
+        type: String,
         required: true
     },
     location: {
@@ -19,6 +19,10 @@ const AdoptReq = new Schema({
     },
     petId: {
         type: String,
+        required: true
+    },
+    accepted: {
+        type: Boolean,
         required: true
     },
     createdAt: {
