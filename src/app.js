@@ -42,7 +42,7 @@ app.use(paymentRoute)
 
 
 app.get("/health", (req, res) => {
-    res.send("Welcome to the pet adoption server here ....");
+    res.send("Welcome to the pet adoption server  ....");
 });
 
 app.all("*", (req, res, next) => {
