@@ -17,6 +17,8 @@ const allDonationCampaignsRoute = require('./routes/DonationCampaigns/allCampaig
 const userAddedPet = require('./routes/UserPet/index')
 const userAddedDonations = require('./routes/UserDonations/index')
 const searchRoute = require('./routes/Pets/getPet')
+const stripeRoute = require('./routes/Stripe/index')
+const paymentRoute = require('./routes/Payment/index')
 
 
 //------------------all middlewares------------------------
@@ -34,6 +36,8 @@ app.use(allDonationCampaignsRoute);
 app.use(userAddedPet);
 app.use(userAddedDonations);
 app.use(searchRoute);
+app.use(stripeRoute)
+app.use(paymentRoute)
 
 
 

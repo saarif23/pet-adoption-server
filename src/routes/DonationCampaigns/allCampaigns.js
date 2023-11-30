@@ -16,8 +16,8 @@ router.get('/allCampaigns', verifyToken, verifyAdmin, async (req, res) => {
 
 })
 
-//  Change Adopt Status by admin --------------------------------------------------
-router.patch("/allCampaigns/:id", verifyToken, verifyAdmin, async (req, res) => {
+//  Change Adopt Status by admin or user --------------------------------------------------
+router.patch("/allCampaigns/:id", verifyToken, async (req, res) => {
     try {
         const id = req.params.id;
         const { status } = req.body;
