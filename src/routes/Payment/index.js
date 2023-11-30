@@ -16,6 +16,8 @@ router.post('/payments', async (req, res) => {
 
 })
 
+
+
 // Find all payment  by logged user -----------------------------------------------
 router.get('/payments', verifyToken, async (req, res) => {
     try {
@@ -26,5 +28,28 @@ router.get('/payments', verifyToken, async (req, res) => {
         res.status(500).send({ message: error.message });
     }
 });
+
+
+///// Find the pet by ID and delete it---------------------------------
+
+router.delete('/payments/:id', verifyToken, async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const deletedPet = await Payments.findByIdAndDelete(id);
+
+        if (!deletedPet) {
+            return res.status(404).send({ message: 'Pet not found' });
+        }
+
+        res.status(200).send({ message: 'Pet deleted successfully' });
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+});
+
+
+
+
 
 module.exports = router;
