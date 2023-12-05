@@ -5,7 +5,7 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-
+// all routes
 const authenticationRoutes = require('./routes/Authentication/index');
 const petsRoutes = require('./routes/Pets/index')
 const allPetsRoute = require('./routes/Pets/allpets')
